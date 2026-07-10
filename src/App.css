@@ -1,0 +1,142 @@
+.metric-card {
+  border-radius: 1.2rem;
+  background: linear-gradient(145deg, var(--card-bg), var(--panel-bg));
+}
+
+.metric-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 0.9rem;
+  font-size: 1.15rem;
+}
+
+.metric-icon.accent-blue {
+  background: rgba(51, 130, 255, 0.16);
+  color: #2f6ed1;
+}
+
+.metric-icon.accent-violet {
+  background: rgba(124, 77, 255, 0.16);
+  color: #7c4dff;
+}
+
+.metric-icon.accent-teal {
+  background: rgba(24, 176, 167, 0.16);
+  color: #1f8f87;
+}
+
+.metric-icon.accent-amber {
+  background: rgba(255, 180, 0, 0.17);
+  color: #ca7b00;
+}
+
+.trend-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(51, 130, 255, 0.12);
+  color: var(--accent-strong);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.chart-card,
+.hero-panel,
+.insight-item,
+.sidebar-card,
+.topbar,
+.sidebar-link,
+.btn-outline-secondary,
+.btn-primary {
+  transition: all 0.2s ease;
+}
+
+.trend-svg {
+  width: 100%;
+  height: auto;
+}
+
+.trend-area {
+  fill: rgba(51, 130, 255, 0.15);
+}
+
+.trend-line {
+  fill: none;
+  stroke: var(--accent-strong);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.trend-dot {
+  fill: var(--accent-strong);
+}
+
+.forecast-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: end;
+  min-height: 220px;
+}
+
+.forecast-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  height: 100%;
+}
+
+.forecast-bar {
+  width: 100%;
+  min-height: 2rem;
+  border-radius: 999px 999px 0.5rem 0.5rem;
+  background: linear-gradient(180deg, var(--accent-strong), var(--accent-soft));
+}
+
+.insight-item {
+  padding: 0.95rem 1rem;
+  border-radius: 0.95rem;
+  background: var(--panel-bg);
+}
+
+.hero-highlight {
+  border-radius: 1.25rem;
+  padding: 1.2rem;
+  background: linear-gradient(135deg, var(--accent-soft), transparent);
+  border: 1px solid var(--border-soft);
+}
+
+.chart-card {
+  border-radius: 1.2rem;
+}
+
+.chart-shell {
+  position: relative;
+  height: 260px;
+}
+
+.table-search .input-group-text,
+.table-search .form-control {
+  border-color: var(--border-soft);
+}
+
+.table-search .form-control:focus {
+  box-shadow: none;
+  border-color: var(--accent-strong);
+}
+
+.pagination .page-link {
+  border-radius: 0.5rem;
+  margin: 0 0.15rem;
+}
+
+.btn-outline-secondary,
+.btn-outline-primary,
+.btn-primary {
+  border-radius: 0.75rem;
+}
