@@ -1,21 +1,17 @@
+import React from "react";
+import { createRoot } from "react-dom/client";
 
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import "./index.css";
 
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap-icons/font/bootstrap-icons.css'
-import './index.css'
+import App from "./App";
+import { ThemeProvider } from "./context/ThemeContext";
 
-import App from './App.jsx'
-import { ThemeProvider } from './context/ThemeContext'
-import { DataProvider } from './context/DataContext'
-
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
+createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
     <ThemeProvider>
-      <DataProvider>
-        <App />
-      </DataProvider>
+      <App />
     </ThemeProvider>
-  </StrictMode>,
-)
+  </React.StrictMode>
+);
