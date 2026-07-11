@@ -1,11 +1,18 @@
-import { useMemo, useState } from 'react'
-import { Bar, Doughnut, Pie } from 'react-chartjs-2'
-import 'chart.js/auto'
-import MetricCard from '../components/MetricCard'
-import TrendChart from '../components/TrendChart'
-import { alerts, routePerformance, trendSeries } from '../data/dashboardData'
-import { getDashboardMetrics } from "../data/dashboardData";
-import { useData } from "../context/DataContext";
+import { useMemo, useState } from "react";
+import { Bar, Doughnut, Pie } from "react-chartjs-2";
+import "chart.js/auto";
+
+import MetricCard from "../components/MetricCard";
+import TrendChart from "../components/TrendChart";
+
+import {
+  alerts,
+  routePerformance,
+  trendSeries,
+  getDashboardMetrics,
+} from "../data/dashboardData";
+
+import { useAnalytics } from "../context/DataContext";
 
 const executiveRows = [
   { route: 'SEA → LAX', region: 'West Coast', demand: 'High', load: '92%', loadValue: 92, margin: '+12.4%', revenue: '$1.24M', revenueValue: 1.24, marginValue: 12.4 },
@@ -28,15 +35,11 @@ const demandMixData = {
   ],
 }
 
-const { workbook } = useData();
-
-const metrics = getDashboardMetrics(workbook);
-
 const channelMixData = {
   labels: ['Direct', 'OTA', 'Corporate', 'Agency'],
   datasets: [
     {
-      data: [44, 28, 18, 10],
+      data: [44, 28, 18, 10]
       backgroundColor: ['#2f6ed1', '#18b0a7', '#7c4dff', '#f59e0b'],
       borderWidth: 0,
       hoverOffset: 6,
@@ -84,6 +87,8 @@ const barOptions = {
 }
 
 export default function OverviewPage() {
+  const { workbook } = useAnalytics();
+  const metrics = getDashboardMetrics(workbook);
   const [searchTerm, setSearchTerm] = useState('')
   const [sortConfig, setSortConfig] = useState({ key: 'marginValue', direction: 'desc' })
   const [currentPage, setCurrentPage] = useState(1)
@@ -91,7 +96,7 @@ export default function OverviewPage() {
 
   const filteredRows = useMemo(() => {
     const normalized = searchTerm.trim().toLowerCase()
-
+    
     return executiveRows.filter((row) => {
       if (!normalized) {
         return true
