@@ -155,14 +155,46 @@ export async function analyzeFolderStatusFile(file) {
   )
 
   return {
+
+    // Metadata
+
     fileName: file.name,
+
+    uploadedAt: new Date(),
+
     sheetName,
+
     detectedColumn,
+
+    headers,
+
+
+
+    // Entire workbook
+
+    rows,
+
+
+
+    // Summary
+
+    summary,
+
+
+
+    // Quick access
+
     totalRecords: summary.totalRecords,
+
     invoiced: summary.invoiced,
+
     uninvoiced: summary.uninvoiced,
+
     blankStatusRows: summary.blankStatusRows,
+
     unrecognizedStatusRows: summary.unrecognizedStatusRows,
-    rawStatusCounts: summary.rawStatusCounts,
-  }
+
+    rawStatusCounts: summary.rawStatusCounts
+
+}
 }
