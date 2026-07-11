@@ -1,54 +1,43 @@
-export function summarizeFolderStatus(rows) {
+const INVOICED = [
+  "invoiced",
+  "partial refund",
+];
 
-    let invoiced = 0;
-    let uninvoiced = 0;
-    let others = 0;
+const UNINVOICED = [
+  "refund request",
+  "saved",
+];
 
-    rows.forEach((row) => {
+export function summarizeFolderStatus(rows, columnName) {
+  let invoiced = 0;
+  let uninvoiced = 0;
+  let others = 0;
 
-        const status = (row["Folder Status"] || "")
-            .trim()
-            .toLowerCase();
+  const rawStatusCounts = {};
 
-        switch (status) {
+  rows.forEach((row) => {
+    const status = String(row[columnName] ?? "").trim();
 
-            case "invoiced":
+    if (!status) return;
 
-                invoiced++;
-                break;
+    rawStatusCounts[status] = (rawStatusCounts[status] || 0) + 1;
 
-            case "partial refund":
+    const normalized = status.toLowerCase();
 
-                invoiced++;
-                break;
+    if (INVOICED.includes(normalized)) {
+      invoiced++;
+    } else if (UNINVOICED.includes(normalized)) {
+      uninvoiced++;
+    } else {
+      others++;
+    }
+  });
 
-            case "uninvoiced":
-
-                uninvoiced++;
-                break;
-
-            case "refund request":
-
-                uninvoiced++;
-                break;
-
-            default:
-
-                others++;
-        }
-
-    });
-
-    return {
-
-        total: rows.length,
-
-        invoiced,
-
-        uninvoiced,
-
-        others
-
-    };
-
+  return {
+    totalRecords: rows.length,
+    invoiced,
+    uninvoiced,
+    others,
+    rawStatusCounts,
+  };
 }
