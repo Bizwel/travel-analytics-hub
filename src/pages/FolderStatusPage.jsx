@@ -50,7 +50,7 @@ export default function FolderStatusPage() {
    try {
   const result = await analyzeFolderStatusFile(file)
 
-  setAnalysis(result)
+  setWorkbook(result)
 
 } catch (err) {
   }
