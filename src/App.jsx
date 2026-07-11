@@ -1,26 +1,8 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import DashboardLayout from './components/DashboardLayout'
-import FolderStatusPage from './pages/FolderStatusPage'
-import ForecastPage from './pages/ForecastPage'
-import OperationsPage from './pages/OperationsPage'
-import OverviewPage from './pages/OverviewPage'
-import ReportsPage from './pages/ReportsPage'
-import './App.css'
-
-function App() {
+export default function App() {
   return (
-          <BrowserRouter basename="/travel-analytics-hub">
-      <Routes>
-        <Route element={<DashboardLayout />}>
-          <Route index element="/" element={<OverviewPage />} />
-          <Route path="/forecast" element={<ForecastPage />} />
-          <Route path="/operations" element={<OperationsPage />} />
-          <Route path="/reports" element={<ReportsPage />} />
-          <Route path="/folder-status" element={<FolderStatusPage />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  )
+    <div style={{ padding: 50 }}>
+      <h1>Travel Analytics Hub</h1>
+      <h2>If you can see this, React is working.</h2>
+    </div>
+  );
 }
-
-export default App
