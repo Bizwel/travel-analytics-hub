@@ -3,7 +3,9 @@ import { Bar, Doughnut, Pie } from 'react-chartjs-2'
 import 'chart.js/auto'
 import MetricCard from '../components/MetricCard'
 import TrendChart from '../components/TrendChart'
-import { alerts, metrics, routePerformance, trendSeries } from '../data/dashboardData'
+import { alerts, routePerformance, trendSeries } from '../data/dashboardData'
+import { getDashboardMetrics } from "../data/dashboardData";
+import { useData } from "../context/DataContext";
 
 const executiveRows = [
   { route: 'SEA → LAX', region: 'West Coast', demand: 'High', load: '92%', loadValue: 92, margin: '+12.4%', revenue: '$1.24M', revenueValue: 1.24, marginValue: 12.4 },
@@ -25,6 +27,10 @@ const demandMixData = {
     },
   ],
 }
+
+const { workbook } = useData();
+
+const metrics = getDashboardMetrics(workbook);
 
 const channelMixData = {
   labels: ['Direct', 'OTA', 'Corporate', 'Agency'],
