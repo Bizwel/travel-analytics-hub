@@ -1,30 +1,54 @@
 import { createContext, useContext, useState } from "react";
 
-const DataContext = createContext();
+const DataContext = createContext(null);
 
 export function DataProvider({ children }) {
-    const [analysis, setAnalysis] = useState(null);
-    const [rows, setRows] = useState([]);
-    const [fileName, setFileName] = useState("");
+  const [workbook, setWorkbook] = useState({
+    fileName: "",
+    sheetName: "",
+    uploadedAt: null,
+    rows: [],
+    summary: null,
+    rawStatusCounts: {},
+    validation: {
+      valid: false,
+      errors: [],
+    },
+  });
 
-    return (
-       <DataContext.Provider
-        value={{
-        analysis,
-        setAnalysis,
-        
-        rows,
-        setRows,
-        
-        fileName,
-        setFileName
-        }}
-        >
-            {children}
-        </DataContext.Provider>
-    );
+  const clearWorkbook = () =>
+    setWorkbook({
+      fileName: "",
+      sheetName: "",
+      uploadedAt: null,
+      rows: [],
+      summary: null,
+      rawStatusCounts: {},
+      validation: {
+        valid: false,
+        errors: [],
+      },
+    });
+
+  return (
+    <DataContext.Provider
+      value={{
+        workbook,
+        setWorkbook,
+        clearWorkbook,
+      }}
+    >
+      {children}
+    </DataContext.Provider>
+  );
 }
 
-export function useData() {
-    return useContext(DataContext);
+export function useAnalytics() {
+  const context = useContext(DataContext);
+
+  if (!context) {
+    throw new Error("useAnalytics must be used inside DataProvider");
+  }
+
+  return context;
 }
