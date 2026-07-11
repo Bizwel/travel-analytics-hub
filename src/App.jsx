@@ -9,10 +9,10 @@ import './App.css'
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/travel-analytics-hub">
       <Routes>
         <Route element={<DashboardLayout />}>
-          <Route path="/" element={<OverviewPage />} />
+          <Route index element="/" element={<OverviewPage />} />
           <Route path="/forecast" element={<ForecastPage />} />
           <Route path="/operations" element={<OperationsPage />} />
           <Route path="/reports" element={<ReportsPage />} />
