@@ -9,7 +9,8 @@ import './App.css'
 
 function App() {
   return (
-    <BrowserRouter basename="/travel-analytics-hub">
+    //<BrowserRouter basename="/travel-analytics-hub">
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>
         <Route element={<DashboardLayout />}>
           <Route index element="/" element={<OverviewPage />} />
