@@ -1,36 +1,58 @@
-export const metrics = [
-  {
-    title: 'Revenue uplift',
-    value: '$4.8M',
-    change: '+18.2%',
-    detail: 'vs. last quarter',
-    icon: 'cash-coin',
-    accent: 'accent-blue',
-  },
-  {
-    title: 'Occupancy',
-    value: '86.4%',
-    change: '+5.6%',
-    detail: 'across premium routes',
-    icon: 'person-badge',
-    accent: 'accent-violet',
-  },
-  {
-    title: 'On-time arrivals',
-    value: '94.1%',
-    change: '+2.3%',
-    detail: 'from airport operations',
-    icon: 'airplane-engines',
-    accent: 'accent-teal',
-  },
-  {
-    title: 'Traveler sentiment',
-    value: '4.8/5',
-    change: '+0.4',
-    detail: 'NPS across loyalty tiers',
-    icon: 'emoji-smile',
-    accent: 'accent-amber',
-  },
+export function getDashboardMetrics(workbook){
+
+if(!workbook){
+
+return [
+
+{
+title:"Total Records",
+value:"—",
+icon:"journal-bookmark",
+accent:"accent-blue"
+},
+
+{
+title:"Invoiced",
+value:"—",
+icon:"cash-coin",
+accent:"accent-teal"
+},
+
+{
+title:"Uninvoiced",
+value:"—",
+icon:"receipt",
+accent:"accent-violet"
+}
+
+]
+
+}
+
+return [
+
+{
+title:"Total Records",
+value:workbook.totalRecords,
+icon:"journal-bookmark",
+accent:"accent-blue"
+},
+
+{
+title:"Invoiced",
+value:workbook.invoiced,
+icon:"cash-coin",
+accent:"accent-teal"
+},
+
+{
+title:"Uninvoiced",
+value:workbook.uninvoiced,
+icon:"receipt",
+accent:"accent-violet"
+}
+
+]
 ]
 
 export const trendSeries = [42, 68, 61, 79, 92, 88, 104]
