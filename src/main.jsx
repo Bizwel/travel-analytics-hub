@@ -1,5 +1,4 @@
 
-import { DataProvider } from "./context/DataContext";
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
