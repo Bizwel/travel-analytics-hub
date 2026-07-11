@@ -1,18 +1,17 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import DashboardLayout from "./components/DashboardLayout";
 
 function TestPage() {
-  return (
-    <div style={{ padding: 40 }}>
-      <h1>Router Works</h1>
-    </div>
-  );
+  return <h1>Dashboard OK</h1>;
 }
 
 export default function App() {
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>
-        <Route path="/" element={<TestPage />} />
+        <Route element={<DashboardLayout />}>
+          <Route path="/" element={<TestPage />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
