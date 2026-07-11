@@ -2,6 +2,7 @@ import { useState } from 'react'
 import MetricCard from '../components/MetricCard'
 import { analyzeFolderStatusFile } from '../services/folderStatusService'
 
+
 const summaryCards = [
   {
     title: 'Total Records',
@@ -21,10 +22,9 @@ const summaryCards = [
 ]
 
 export default function FolderStatusPage() {
-  const [analysis, setAnalysis] = useState(null)
+  import { useData } from "../context/DataContext";
   const [error, setError] = useState('')
   const [isProcessing, setIsProcessing] = useState(false)
-  const [fileName, setFileName] = useState('')
 
   const handleFileChange = async (event) => {
     const file = event.target.files?.[0]
@@ -35,7 +35,18 @@ export default function FolderStatusPage() {
     setIsProcessing(true)
     setError('')
     setFileName(file.name)
+    const {
 
+          analysis,
+          setAnalysis,
+          
+          fileName,
+          setFileName,
+          
+          rows,
+          setRows
+          
+          } = useData();
     try {
       const result = await analyzeFolderStatusFile(file)
       setAnalysis(result)
