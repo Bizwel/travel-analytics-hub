@@ -47,16 +47,12 @@ export default function FolderStatusPage() {
           setRows
           
           } = useData();
-    try {
-      const result = await analyzeFolderStatusFile(file)
-      setAnalysis(result)
-    } catch (err) {
-      setAnalysis(null)
-      setError(err.message || 'Unable to read the selected workbook.')
-    } finally {
-      setIsProcessing(false)
-      event.target.value = ''
-    }
+   try {
+  const result = await analyzeFolderStatusFile(file)
+
+  setAnalysis(result)
+
+} catch (err) {
   }
 
   const cards = analysis
