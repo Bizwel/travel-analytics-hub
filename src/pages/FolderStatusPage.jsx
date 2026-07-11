@@ -25,6 +25,8 @@ export default function FolderStatusPage() {
   import { useData } from "../context/DataContext";
   const [error, setError] = useState('')
   const [isProcessing, setIsProcessing] = useState(false)
+  const { workbook, setWorkbook } = useData()
+  const analysis = workbook;
 
   const handleFileChange = async (event) => {
     const file = event.target.files?.[0]
